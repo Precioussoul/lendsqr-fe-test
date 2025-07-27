@@ -1,0 +1,9 @@
+@use "../../styles/mixins.scss" as *;
+//
+//
+.hello {
+  color: red;
+  @include breakpoint(sm) {
+    color: var(--primary);
+  }
+}

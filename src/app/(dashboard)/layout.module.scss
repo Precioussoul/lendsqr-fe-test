@@ -1,3 +1,4 @@
+@use "../../styles/mixins.scss" as *;
 .dashboardLayout {
   display: flex;
   flex-direction: row;
@@ -5,12 +6,44 @@
   overflow: hidden;
 }
 
+.dashboardLayoutContainer {
+  position: relative;
+}
+
 .sidebar {
-  width: 20%;
+  width: 0px;
+  display: none;
+  @include breakpoint(lg) {
+    width: 20%;
+    display: flex;
+  }
+  @include breakpoint(xxl) {
+    width: 15%;
+    display: flex;
+  }
 }
 
 .content {
   flex: 1;
   background-color: #fbfbfb;
   padding: 1rem;
+}
+
+.sidebarOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.sidebarOverlayContainer {
+  width: 65%;
+  height: 100%;
+  background-color: #fff;
+  @include breakpoint(sm) {
+    width: 40%;
+  }
 }

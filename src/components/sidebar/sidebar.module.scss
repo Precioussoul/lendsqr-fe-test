@@ -1,0 +1,14 @@
+@use "../../styles/mixins.scss" as *;
+.sidebar {
+}
+
+.sidebarHeader {
+  display: flex;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid #e3e3e3;
+  justify-content: space-between;
+  align-items: center;
+  @include breakpoint(lg) {
+    display: none;
+  }
+}

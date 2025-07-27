@@ -1,3 +1,4 @@
+"use client"
 import React from "react"
 import styles from "./sign-in.module.scss"
 import Image from "next/image"
@@ -5,8 +6,15 @@ import signInBg from "@/assets/images/pablo-auth-bg.png"
 import logo from "@/assets/svgs/Lendsqr_logo.svg"
 import PrimaryInput from "@/components/primaryInput/PrimaryInput"
 import chevronDown from "@/assets/svgs/chevron-down.svg"
+import {useRouter} from "next/navigation"
 
 const LoginPage = () => {
+  const router = useRouter()
+
+  const handleSignIn = () => {
+    router.push("/users")
+  }
+
   return (
     <div className={styles.authContainer}>
       <div className={styles.authBg}>
@@ -25,11 +33,13 @@ const LoginPage = () => {
             <p>Enter details to login.</p>
           </div>
           <div className={styles.authForm}>
-            <PrimaryInput label='Email' type='email' id='email' name='email' placeholder='Enter your email' />
-            <PrimaryInput label='Password' type='password' id='password' name='password' placeholder='Enter your password' showPassword />
+            <PrimaryInput type='email' id='email' name='email' placeholder='Enter your email' />
+            <PrimaryInput type='password' id='password' name='password' placeholder='Enter your password' showPassword />
             <span className={styles.forgotPassword}>Forgot Password?</span>
           </div>
-          <button className={styles.signInButton}>Sign In</button>
+          <button className={styles.signInButton} onClick={handleSignIn}>
+            Sign In
+          </button>
         </div>
       </div>
     </div>

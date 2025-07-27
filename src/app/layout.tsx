@@ -1,15 +1,16 @@
 import type {Metadata} from "next"
-import {Inter} from "next/font/google"
+import {Prompt, Work_Sans} from "next/font/google"
 import "../styles/main.scss"
 import Navbar from "@/components/navbar/navbar"
 
-const interSans = Inter({
-  variable: "--font-inter-sans",
+const prompt = Prompt({
+  variable: "--font-prompt",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 })
 
-const interMono = Inter({
-  variable: "--font-inter-mono",
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
   subsets: ["latin"],
 })
 
@@ -25,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${interSans.variable} ${interMono.variable}`}>{children}</body>
+      <body className={`${prompt.variable} ${workSans.variable}`}>{children}</body>
     </html>
   )
 }

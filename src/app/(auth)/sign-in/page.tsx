@@ -5,7 +5,6 @@ import Image from "next/image"
 import signInBg from "@/assets/images/pablo-auth-bg.png"
 import logo from "@/assets/svgs/Lendsqr_logo.svg"
 import PrimaryInput from "@/components/primaryInput/PrimaryInput"
-import chevronDown from "@/assets/svgs/chevron-down.svg"
 import {useRouter} from "next/navigation"
 
 const LoginPage = () => {

@@ -1,9 +1,38 @@
 @use "../../styles/mixins.scss" as *;
 //
 //
-.hello {
-  color: red;
-  @include breakpoint(sm) {
-    color: var(--primary);
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
+  max-height: 100px;
+  width: 100%;
+  padding: 1rem;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.navLinksContainer {
+  & ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
   }
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }

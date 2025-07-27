@@ -1,0 +1,16 @@
+.dashboardLayout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.content {
+  flex: 1;
+  background-color: #fbfbfb;
+  padding: 1rem;
+}

@@ -23,7 +23,9 @@ const SidebarItem = ({active, icon, extraIcon, title, onClick}: SidebarItemProps
       }}
     >
       <Image src={icon || UserIcon} alt='userIcon' width={20} height={20} />
-      <span style={{color: active ? "#213f7d" : "#213f7d90"}}>{title}</span>
+      <span style={{color: active ? "#213f7d" : "#213f7d90"}} className={styles.title}>
+        {title}
+      </span>
       {extraIcon && <Image src={extraIcon} alt='extraIcon' width={15} height={15} />}
     </li>
   )

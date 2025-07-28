@@ -24,7 +24,7 @@ const DashboardLayout = ({children}: {children: React.ReactNode}) => {
       {isSidebarOpen && (
         <div className={styles.sidebarOverlay}>
           <div className={styles.sidebarOverlayContainer} onClick={handleSidebarMenuClick}>
-            <Sidebar />
+            <Sidebar isSidebarOpen={isSidebarOpen} />
           </div>
         </div>
       )}

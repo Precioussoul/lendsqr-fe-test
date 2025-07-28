@@ -65,3 +65,33 @@
   flex-direction: column;
   gap: 0.3rem;
 }
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+  @include breakpoint(lg) {
+    display: none;
+  }
+}
+
+.avatarContainer {
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  border-radius: 50%;
+  .avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.profileInfoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+}

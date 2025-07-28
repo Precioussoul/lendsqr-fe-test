@@ -11,8 +11,10 @@
   transition: background-color 0.2s ease;
   &:hover {
     background-color: #39cdcc30;
-    color: var(--header-color);
     border-left: 4px solid #39cdcc;
     padding: 0.5rem 0.8rem;
+    .title {
+      color: var(--header-color) !important;
+    }
   }
 }

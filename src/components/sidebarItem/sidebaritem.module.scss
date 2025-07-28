@@ -1,0 +1,18 @@
+.sidebarItem {
+  font-family: var(--font-work-sans);
+  font-size: 0.9rem;
+  display: flex;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  flex: 1;
+  gap: 0.5rem;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #39cdcc30;
+    color: var(--header-color);
+    border-left: 4px solid #39cdcc;
+    padding: 0.5rem 0.8rem;
+  }
+}

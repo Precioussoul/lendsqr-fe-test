@@ -5,11 +5,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 64px;
   max-height: 100px;
   width: 100%;
-  padding: 1rem;
-  border-bottom: 1px solid #fbfbfb;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .logoContainer {

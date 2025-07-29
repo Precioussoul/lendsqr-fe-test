@@ -1,16 +1,25 @@
 @use "../../../styles/mixins.scss" as *;
 .container {
-  padding: 2rem;
-  max-width: 1440px;
+  padding: 0.5rem;
   margin: 0 auto;
   width: 100%;
+  @include breakpoint(sm) {
+    padding: 1rem;
+  }
+  @include breakpoint(lg) {
+    padding: 2rem;
+  }
 }
 
 .title {
   font-size: 1.5rem;
   font-weight: 600;
+  font-family: var(--font-work-sans);
   color: #213f7d;
   margin-bottom: 2rem;
+  @include breakpoint(md) {
+    font-size: 1.75rem;
+  }
 }
 
 .tableContainer {
@@ -21,17 +30,8 @@
   margin-top: 1.5rem;
 }
 
-@include breakpoint(md) {
-  .container {
-    padding: 2.5rem 3rem;
-  }
-  .title {
-    font-size: 1.75rem;
-  }
-}
-
-@include breakpoint(lg) {
-  .container {
-    padding: 3rem 4rem;
-  }
+.userStatsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }

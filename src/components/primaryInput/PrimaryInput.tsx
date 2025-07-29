@@ -4,13 +4,14 @@ import Image from "next/image"
 
 interface PrimaryInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
+  labelStyles?: React.CSSProperties
   type: string
   error?: string
   id: string
   icon?: string
   showPassword?: boolean
 }
-const PrimaryInput = ({label, type, error, id, icon, showPassword, ...props}: PrimaryInputProps) => {
+const PrimaryInput = ({label, type, error, id, icon, showPassword, labelStyles, ...props}: PrimaryInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false)
 
   const togglePasswordVisibility = () => {
@@ -20,7 +21,7 @@ const PrimaryInput = ({label, type, error, id, icon, showPassword, ...props}: Pr
   return (
     <div className={styles.primaryInputContainer}>
       {label && (
-        <label htmlFor={id} className={styles.label}>
+        <label htmlFor={id} className={styles.label} style={labelStyles}>
           {label}
         </label>
       )}

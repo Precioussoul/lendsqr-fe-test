@@ -1,0 +1,207 @@
+@use "../../../../styles/mixins.scss" as *;
+.container {
+  padding: 0.5rem;
+  margin: 0 auto;
+  width: 100%;
+  @include breakpoint(sm) {
+    padding: 1rem;
+  }
+  @include breakpoint(lg) {
+    padding: 2rem;
+  }
+  font-family: var(--font-work-sans);
+}
+
+.userDetailsActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.userDetailInfo {
+  background-color: #fff;
+  padding: 2rem 2rem 0 2rem;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.goBackButton {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-work-sans);
+  max-width: fit-content;
+  background-color: transparent;
+}
+
+.userDetailInfoHeaderContent {
+  display: flex;
+  align-items: center;
+}
+
+.headerContent {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.headerContentActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: var(--font-work-sans);
+  color: #213f7d;
+}
+
+.profileWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-right: 1px solid #e5e5e5;
+  padding-right: 1rem;
+  min-height: 100px;
+}
+
+.profileImageWrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5e5;
+}
+
+.profileContent {
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+  & h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-work-sans);
+    color: #213f7d;
+  }
+  & p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: var(--font-work-sans);
+    color: var(--text-color);
+  }
+}
+
+.profileImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.userRatingWrapper {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #e5e5e5;
+  padding: 1rem 2rem;
+  min-height: 100px;
+}
+
+.userRatingContentTitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-work-sans);
+  color: #213f7d;
+}
+
+.userRatingContentStars {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.userBalanceWrapper {
+  min-height: 100px;
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  & h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-work-sans);
+    color: #213f7d;
+  }
+  & p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: var(--font-work-sans);
+    color: var(--text-color);
+  }
+}
+
+.userDetailInfoHeaderActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  .tabButton {
+    background: none;
+    border: none;
+    padding: 0.1rem 1.5rem;
+    font-family: var(--font-work-sans);
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.2s ease;
+    &:hover {
+      color: var(--primary);
+    }
+    &.activeTab {
+      color: var(--primary);
+      font-weight: 600;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary);
+      }
+    }
+  }
+}
+
+.tabContent {
+  padding: 1.5rem 0;
+  .tabPanel {
+    h3 {
+      font-size: 1rem;
+      color: #213f7d;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+  }
+}

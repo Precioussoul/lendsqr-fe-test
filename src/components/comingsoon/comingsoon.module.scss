@@ -1,0 +1,97 @@
+.comingSoon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.content {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.iconContainer {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  color: #213f7d;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-family: var(--font-work-sans);
+}
+
+.message {
+  color: #545f7d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-family: var(--font-work-sans);
+}
+
+.progressContainer {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.progressBar {
+  height: 8px;
+  background-color: #f0f4f8;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(90deg, #39cdcc 0%, #2d9cdb 100%);
+  border-radius: 4px;
+  position: relative;
+  animation: progressAnimation 2s ease-in-out infinite alternate;
+}
+
+.progressText {
+  font-size: 0.875rem;
+  color: #39cdcc;
+  font-weight: 500;
+  display: inline-block;
+  font-family: var(--font-work-sans);
+}
+
+@keyframes progressAnimation {
+  0% {
+    width: 70%;
+    opacity: 0.8;
+  }
+  100% {
+    width: 75%;
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+  .comingSoon {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  .content {
+    padding: 1.5rem 0;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .message {
+    font-size: 1rem;
+  }
+}

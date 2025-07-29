@@ -50,7 +50,7 @@ const UsersDashboardPage = () => {
   const handleRowClick = (user: User) => {
     // Navigate to user details page
     console.log("Viewing user:", user.id)
-    // router.push(`/users/${user.id}`);
+    router.push(`/users/${user.id}`)
   }
 
   const handleStatusChange = (userId: string, status: User["status"]) => {

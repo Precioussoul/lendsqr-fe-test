@@ -48,7 +48,7 @@ const Sidebar = ({onSidebarMenuClick, isSidebarOpen}: SidebarProps) => {
                     key={item.title}
                     title={item.title}
                     icon={item.icon}
-                    active={pathname === item.path}
+                    active={pathname === item.path || pathname.startsWith(item.path || "")}
                     onClick={() => item.path && handleClick(item.path)}
                   />
                 ))}

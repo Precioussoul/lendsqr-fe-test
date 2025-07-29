@@ -1,0 +1,46 @@
+.personalinfo {
+  display: flex;
+  min-height: 400px;
+  font-family: var(--font-work-sans);
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  width: 100%;
+}
+
+.personalinfoContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.personalinfoHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.personalinfoTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-work-sans);
+  color: #213f7d;
+}
+
+.detailItemsContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem 0rem;
+}

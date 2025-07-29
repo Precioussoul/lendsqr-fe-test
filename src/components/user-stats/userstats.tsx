@@ -11,7 +11,7 @@ const UserStats = () => {
     <div className={styles.userStats}>
       <StatsItem label='Users' value='2456' icon={np_users} iconBg='#DF18FF15' />
       <StatsItem label='Active Users' value='2453' icon={np_users_active} iconBg='#5718FF15' />
-      <StatsItem label='Users with loan' value='124531' icon={np_users_loan} iconBg='#F55F4415' />
+      <StatsItem label='Users with loan' value='12453' icon={np_users_loan} iconBg='#F55F4415' />
       <StatsItem label='Users with Savings' value='102453' icon={np_users_savings} iconBg='#FF336615' />
     </div>
   )

@@ -6,6 +6,9 @@ import styles from "./Table.module.scss"
 import {User, UserStatus, UserTableHeader} from "@/types/user"
 import FilterIcon from "@/assets/svgs/filter-results.svg"
 import VerticalMoreIcon from "@/assets/svgs/moreVerticalIcon.svg"
+import ViewDetailIcon from "@/assets/svgs/np_view_detail.svg"
+import BlacklistIcon from "@/assets/svgs/np_blacklist.svg"
+import ActivateUserIcon from "@/assets/svgs/activate_user.svg"
 import ChevronDownIcon from "@/assets/svgs/chevron-down.svg"
 import FilterForm from "@/components/filterform/filter-form"
 
@@ -60,7 +63,6 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
     setActiveFilter(activeFilter === key ? null : key)
   }
 
-  // Pagination calculations
   const totalPages = Math.ceil(sortedAndFilteredData.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
@@ -80,22 +82,18 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
   // Generate page numbers to show with ellipsis for large numbers of pages
   const getPageNumbers = () => {
     const pages: (number | string)[] = []
-    const maxPagesToShow = 3 // Maximum number of page numbers to show around current page
+    const maxPagesToShow = 3
 
     if (totalPages <= maxPagesToShow + 2) {
-      // Show all pages if not too many
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i)
       }
     } else {
-      // Always show first page
       pages.push(1)
 
-      // Calculate range around current page
       let startPage = Math.max(2, currentPage - Math.floor(maxPagesToShow / 2))
       let endPage = Math.min(totalPages - 1, startPage + maxPagesToShow - 1)
 
-      // Adjust if we're at the start or end
       if (currentPage <= Math.ceil(maxPagesToShow / 2)) {
         startPage = 2
         endPage = Math.min(startPage + maxPagesToShow - 1, totalPages - 1)
@@ -104,22 +102,18 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
         startPage = Math.max(2, endPage - maxPagesToShow + 1)
       }
 
-      // Add ellipsis after first page if needed
       if (startPage > 2) {
         pages.push("ellipsis")
       }
 
-      // Add page numbers in range
       for (let i = startPage; i <= endPage; i++) {
         pages.push(i)
       }
 
-      // Add ellipsis before last page if needed
       if (endPage < totalPages - 1) {
         pages.push("ellipsis")
       }
 
-      // Always show last page if there is more than one page
       if (totalPages > 1) {
         pages.push(totalPages)
       }
@@ -186,12 +180,15 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
                     {activeDropdown === user.id && (
                       <div className={styles.dropdownMenu}>
                         <button className={styles.dropdownItem} onClick={() => onRowClick?.(user)}>
+                          <Image src={ViewDetailIcon} alt='View Details' width={16} height={16} />
                           View Details
                         </button>
                         <button className={styles.dropdownItem} onClick={() => onStatusChange?.(user.id, "blacklisted")}>
+                          <Image src={BlacklistIcon} alt='Blacklist User' width={16} height={16} />
                           Blacklist User
                         </button>
                         <button className={styles.dropdownItem} onClick={() => onStatusChange?.(user.id, "active")}>
+                          <Image src={ActivateUserIcon} alt='Activate User' width={16} height={16} />
                           Activate User
                         </button>
                       </div>
@@ -225,7 +222,7 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
               disabled={currentPage === 1}
               className={`${styles.pageButton} ${currentPage === 1 ? styles.disabled : ""}`}
             >
-              &larr; Previous
+              &larr; Prev
             </button>
 
             <div className={styles.pageNumbers}>

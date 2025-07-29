@@ -15,10 +15,14 @@
   display: none;
   height: 100%;
   @include breakpoint(lg) {
+    width: 20%;
+    display: flex;
+  }
+  @include breakpoint(xl) {
     width: 17%;
     display: flex;
   }
-  @include breakpoint(xxl) {
+  @include breakpoint(2xl) {
     width: 12%;
     display: flex;
   }

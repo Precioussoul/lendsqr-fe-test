@@ -28,6 +28,8 @@
   flex: 1;
   background-color: #fbfbfb;
   padding: 1rem;
+  overflow-y: scroll;
+  height: calc(100vh - 70px);
 }
 
 .sidebarOverlay {

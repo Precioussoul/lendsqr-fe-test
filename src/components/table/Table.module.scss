@@ -1,0 +1,201 @@
+@use "../../styles/mixins.scss" as *;
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  margin-top: 2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  color: #545f7d;
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+  }
+}
+
+.tableHeader {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #545f7d;
+  background-color: #f9f9f9;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sortButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 1;
+  }
+  img {
+    transition: transform 0.2s;
+  }
+  &[data-direction="desc"] img {
+    transform: rotate(180deg);
+  }
+}
+
+.filterContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: auto;
+  img {
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.filterInput {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: none;
+  .filterContainer:hover & {
+    display: block;
+  }
+}
+
+.tableRow {
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: rgba(57, 205, 204, 0.05);
+  }
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  min-width: 80px;
+}
+
+.statusActive {
+  background-color: rgba(57, 205, 98, 0.1);
+  color: #39cd62;
+}
+
+.statusInactive {
+  background-color: rgba(84, 95, 125, 0.1);
+  color: #545f7d;
+}
+
+.statusPending {
+  background-color: rgba(233, 178, 0, 0.1);
+  color: #e9b200;
+}
+
+.statusBlacklisted {
+  background-color: rgba(228, 3, 59, 0.1);
+  color: #e4033b;
+}
+
+.actionsCell {
+  padding: 0.5rem !important;
+  position: relative;
+}
+
+.dropdownContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.moreButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: rgba(33, 63, 125, 0.1);
+  }
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid rgba(84, 95, 125, 0.1);
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #545f7d;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: #f5f5f5;
+    color: #213f7d;
+  }
+}
+
+.noData {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+// Responsive styles
+@include breakpoint(md) {
+  .table {
+    font-size: 0.9rem;
+  }
+  .tableHeader {
+    font-size: 0.75rem;
+  }
+}

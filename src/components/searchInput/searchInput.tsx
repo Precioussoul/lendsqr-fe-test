@@ -15,7 +15,7 @@ const SearchInput = () => {
           <input type={"text"} id={"search"} name='search' placeholder='Search for anything' className={styles.input} />
         </div>
         <div className={styles.iconContainer}>
-          <Image src={SearchIcon} alt='Icon' width={15} height={15} />
+          <Image src={SearchIcon} alt='Search Icon' width={15} height={15} />
         </div>
       </div>
     </div>

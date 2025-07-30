@@ -23,7 +23,7 @@ const SidebarItem = ({active, icon, extraIcon, title, onClick, isPinned}: Sideba
         borderLeft: active ? "4px solid #39CDCC" : "",
       }}
     >
-      <Image src={icon || UserIcon} alt='userIcon' width={20} height={20} />
+      <Image src={icon || UserIcon} alt='SidebarIcon' width={20} height={20} />
       <span style={{color: active || isPinned ? "#213f7d" : "#213f7d90"}} className={styles.title}>
         {title}
       </span>

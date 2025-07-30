@@ -10,8 +10,9 @@ interface PrimaryInputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   id: string
   icon?: string
   showPassword?: boolean
+  extraIcon?: string
 }
-const PrimaryInput = ({label, type, error, id, icon, showPassword, labelStyles, ...props}: PrimaryInputProps) => {
+const PrimaryInput = ({label, type, error, id, icon, showPassword, extraIcon, labelStyles, ...props}: PrimaryInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false)
 
   const togglePasswordVisibility = () => {
@@ -33,6 +34,7 @@ const PrimaryInput = ({label, type, error, id, icon, showPassword, labelStyles, 
             {isPasswordVisible ? "Hide" : "Show"}
           </span>
         )}
+        {extraIcon && <Image src={extraIcon} alt='Icon' width={15} height={15} />}
       </div>
 
       <span className={styles.error}>{error}</span>

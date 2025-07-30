@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useState, useMemo} from "react"
+import React, {useState, useMemo, useRef, useEffect} from "react"
 import Image from "next/image"
 import styles from "./Table.module.scss"
 import {User, UserStatus, UserTableHeader} from "@/types/user"
@@ -28,11 +28,37 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  const toggleDropdown = (id: string, event: React.MouseEvent) => {
+    event.stopPropagation()
+    setActiveDropdown(activeDropdown === id ? null : id)
+
+    const button = event.currentTarget as HTMLElement
+    const dropdownMenu = button.nextElementSibling as HTMLElement
+    if (dropdownMenu) {
+      const buttonRect = button.getBoundingClientRect()
+      dropdownMenu.style.top = `${buttonRect.bottom + window.scrollY}px`
+      dropdownMenu.style.right = `${window.innerWidth - buttonRect.right}px`
+    }
+  }
 
   const sortedAscDscData = useMemo(() => {
     let result = [...data]
 
-    // Apply sorting
     if (sortConfig !== null) {
       result.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -54,10 +80,6 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
       direction = "desc"
     }
     setSortConfig({key, direction})
-  }
-
-  const toggleDropdown = (userId: string) => {
-    setActiveDropdown(activeDropdown === userId ? null : userId)
   }
 
   const handleFilterChange = (key: string) => {
@@ -130,7 +152,7 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
                 <td>{renderStatusBadge(user.status)}</td>
                 <td className={styles.actionsCell}>
                   <div className={styles.dropdownContainer}>
-                    <button className={styles.moreButton} onClick={() => toggleDropdown(user.id)}>
+                    <button className={styles.moreButton} onClick={(e) => toggleDropdown(user.id, e)}>
                       <Image src={VerticalMoreIcon} alt='Actions' width={20} height={20} />
                     </button>
                     {activeDropdown === user.id && (

@@ -11,6 +11,7 @@ interface PaginationProps {
   handlePageChange: (page: number) => void
   data: User[]
 }
+// client side pagination because of static data
 
 const Pagination: React.FC<PaginationProps> = ({itemsPerPage, handleItemsPerPageChange, currentPage, totalPages, handlePageChange, data}) => {
   return (

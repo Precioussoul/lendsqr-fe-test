@@ -1,5 +1,3 @@
-import {User} from "@/types/user"
-
 /**
  * Formats a number with commas as thousand separators
  * @param num - The number to format
@@ -56,12 +54,4 @@ export const getPageNumbers = (currentPage: number, totalPages: number) => {
   }
 
   return pages
-}
-
-export const checkCacheValidity = (userId: string) => {
-  const expirationTime = localStorage.getItem(`user-${userId}-expires`)
-  if (expirationTime && Date.now() > parseInt(expirationTime)) {
-    localStorage.removeItem(`user-${userId}`)
-    localStorage.removeItem(`user-${userId}-expires`)
-  }
 }

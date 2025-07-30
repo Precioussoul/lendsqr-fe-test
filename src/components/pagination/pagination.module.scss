@@ -1,3 +1,5 @@
+@use "../../styles/mixins.scss" as *;
+//
 .paginationContainer {
   display: flex;
   justify-content: space-between;
@@ -62,8 +64,11 @@
 }
 
 .pageNumbers {
-  display: flex;
+  display: none;
   gap: 0.25rem;
+  @include breakpoint(md) {
+    display: flex;
+  }
 }
 
 .ellipsis {

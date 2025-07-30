@@ -1,5 +1,6 @@
 /**
- * Generate mock users data
+ * Generate mock users data - mocky.io is now paid and json-generator.com - i'm not familiar with it - it confusing
+ * that's why i'm using my own function for convenience
  * @param count - The number of users to generate
  * @returns Array of mock users
  * */

@@ -37,11 +37,14 @@
 .sidebarMenu {
   overflow-y: auto;
   padding-bottom: 2rem;
-  max-height: calc(100vh - 180px);
+  max-height: calc(100vh - 233px);
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+  @include breakpoint(lg) {
+    max-height: calc(100vh - 180px);
   }
 }
 

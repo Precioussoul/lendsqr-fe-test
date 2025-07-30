@@ -43,9 +43,7 @@ const UsersDashboardPage = () => {
       <h1 className={styles.title}>Users</h1>
       <div className={styles.userStatsContainer}>
         <UserStats />
-        <div className={styles.tableContainer}>
-          <Table headers={tableHeaders} data={users} onRowClick={handleRowClick} onStatusChange={handleStatusChange} />
-        </div>
+        <Table headers={tableHeaders} data={users} onRowClick={handleRowClick} onStatusChange={handleStatusChange} />
       </div>
     </div>
   )

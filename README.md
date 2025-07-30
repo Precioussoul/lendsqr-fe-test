@@ -32,8 +32,8 @@ A modern, responsive web application built with React/Next.js, TypeScript, and S
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/lendsqr-fe.git
-   cd lendsqr-fe
+   git clone https://github.com/Precioussoul/lendsqr-fe-test.git
+   cd lendsqr-fe-test
    ```
 
 2. **Install dependencies**
@@ -119,5 +119,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [React Query Documentation](https://tanstack.com/query/latest)
 - [SCSS Documentation](https://sass-lang.com/documentation)

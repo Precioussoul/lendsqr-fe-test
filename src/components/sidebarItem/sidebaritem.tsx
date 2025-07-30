@@ -10,9 +10,10 @@ interface SidebarItemProps {
   extraIcon?: string
   title: string
   onClick?: () => void
+  isPinned?: boolean
 }
 
-const SidebarItem = ({active, icon, extraIcon, title, onClick}: SidebarItemProps) => {
+const SidebarItem = ({active, icon, extraIcon, title, onClick, isPinned}: SidebarItemProps) => {
   return (
     <li
       onClick={onClick}
@@ -23,7 +24,7 @@ const SidebarItem = ({active, icon, extraIcon, title, onClick}: SidebarItemProps
       }}
     >
       <Image src={icon || UserIcon} alt='userIcon' width={20} height={20} />
-      <span style={{color: active ? "#213f7d" : "#213f7d90"}} className={styles.title}>
+      <span style={{color: active || isPinned ? "#213f7d" : "#213f7d90"}} className={styles.title}>
         {title}
       </span>
       {extraIcon && <Image src={extraIcon} alt='extraIcon' width={15} height={15} />}

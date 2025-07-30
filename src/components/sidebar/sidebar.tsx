@@ -34,9 +34,9 @@ const Sidebar = ({onSidebarMenuClick, isSidebarOpen}: SidebarProps) => {
       <div className={styles.sidebarContainer}>
         {/* pinned menu */}
         <ul className={styles.sidebarPinnedMenu}>
-          <SidebarItem title='Switch Organization' icon={BriefcaseIcon} extraIcon={ChevronIcon} />
-          {isSidebarOpen && <SidebarItem title='Documentation' icon={DocIcon} />}
-          <SidebarItem title='Dashboard' icon={HomeIcon} />
+          <SidebarItem title='Switch Organization' icon={BriefcaseIcon} extraIcon={ChevronIcon} isPinned />
+          {isSidebarOpen && <SidebarItem title='Documentation' icon={DocIcon} isPinned />}
+          <SidebarItem title='Dashboard' icon={HomeIcon} isPinned />
         </ul>
         <div className={styles.sidebarMenu}>
           {sidebarMenuData.map((menu) => (

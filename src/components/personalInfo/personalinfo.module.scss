@@ -1,3 +1,5 @@
+@use "../../styles/mixins.scss" as *;
+//
 .personalinfo {
   display: flex;
   min-height: 400px;
@@ -40,7 +42,16 @@
 .detailItemsContainer {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
   padding: 1rem 0rem;
+  @include breakpoint(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include breakpoint(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

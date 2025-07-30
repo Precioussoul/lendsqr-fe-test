@@ -11,6 +11,7 @@ import BlacklistIcon from "@/assets/svgs/np_blacklist.svg"
 import ActivateUserIcon from "@/assets/svgs/activate_user.svg"
 import ChevronDownIcon from "@/assets/svgs/chevron-down.svg"
 import FilterForm from "@/components/filterform/filter-form"
+import Pagination from "../pagination/pagination"
 
 interface TableProps {
   headers: UserTableHeader[]
@@ -28,7 +29,7 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE)
 
-  const sortedAndFilteredData = useMemo(() => {
+  const sortedAscDscData = useMemo(() => {
     let result = [...data]
 
     // Apply sorting
@@ -63,12 +64,10 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
     setActiveFilter(activeFilter === key ? null : key)
   }
 
-  const totalPages = Math.ceil(sortedAndFilteredData.length / itemsPerPage)
+  const totalPages = Math.ceil(sortedAscDscData.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const currentItems = sortedAndFilteredData.slice(startIndex, endIndex)
-  const showingStart = sortedAndFilteredData.length > 0 ? startIndex + 1 : 0
-  const showingEnd = Math.min(endIndex, sortedAndFilteredData.length)
+  const currentItems = sortedAscDscData.slice(startIndex, endIndex)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -76,50 +75,7 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
 
   const handleItemsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(Number(e.target.value))
-    setCurrentPage(1) // Reset to first page when changing items per page
-  }
-
-  // Generate page numbers to show with ellipsis for large numbers of pages
-  const getPageNumbers = () => {
-    const pages: (number | string)[] = []
-    const maxPagesToShow = 3
-
-    if (totalPages <= maxPagesToShow + 2) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i)
-      }
-    } else {
-      pages.push(1)
-
-      let startPage = Math.max(2, currentPage - Math.floor(maxPagesToShow / 2))
-      let endPage = Math.min(totalPages - 1, startPage + maxPagesToShow - 1)
-
-      if (currentPage <= Math.ceil(maxPagesToShow / 2)) {
-        startPage = 2
-        endPage = Math.min(startPage + maxPagesToShow - 1, totalPages - 1)
-      } else if (currentPage >= totalPages - Math.floor(maxPagesToShow / 2)) {
-        endPage = totalPages - 1
-        startPage = Math.max(2, endPage - maxPagesToShow + 1)
-      }
-
-      if (startPage > 2) {
-        pages.push("ellipsis")
-      }
-
-      for (let i = startPage; i <= endPage; i++) {
-        pages.push(i)
-      }
-
-      if (endPage < totalPages - 1) {
-        pages.push("ellipsis")
-      }
-
-      if (totalPages > 1) {
-        pages.push(totalPages)
-      }
-    }
-
-    return pages
+    setCurrentPage(1)
   }
 
   const renderStatusBadge = (status: UserStatus) => {
@@ -203,55 +159,14 @@ const Table: React.FC<TableProps> = ({headers, data, onRowClick, onStatusChange}
       {currentItems.length === 0 ? (
         <div className={styles.noData}>No users found matching the current filters</div>
       ) : (
-        <div className={styles.paginationContainer}>
-          <div className={styles.paginationInfo}>
-            <span>Showing </span>
-            <select value={itemsPerPage} onChange={handleItemsPerPageChange} className={styles.pageSizeSelect}>
-              {[10, 20, 50, 100].map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-            <span> out of {data.length}</span>
-          </div>
-
-          <div className={styles.paginationButtons}>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className={`${styles.pageButton} ${currentPage === 1 ? styles.disabled : ""}`}
-            >
-              &larr; Prev
-            </button>
-
-            <div className={styles.pageNumbers}>
-              {getPageNumbers().map((page, index) =>
-                page === "ellipsis" ? (
-                  <span key={`ellipsis-${index}`} className={styles.ellipsis}>
-                    ...
-                  </span>
-                ) : (
-                  <button
-                    key={page}
-                    onClick={() => handlePageChange(page as number)}
-                    className={`${styles.pageButton} ${currentPage === page ? styles.active : ""}`}
-                  >
-                    {page}
-                  </button>
-                )
-              )}
-            </div>
-
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages || totalPages === 0}
-              className={`${styles.pageButton} ${currentPage === totalPages || totalPages === 0 ? styles.disabled : ""}`}
-            >
-              Next &rarr;
-            </button>
-          </div>
-        </div>
+        <Pagination
+          itemsPerPage={itemsPerPage}
+          handleItemsPerPageChange={handleItemsPerPageChange}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+          data={data}
+        />
       )}
     </div>
   )

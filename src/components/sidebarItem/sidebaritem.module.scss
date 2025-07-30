@@ -14,9 +14,11 @@
     background-color: #39cdcc30;
     border-left: 4px solid #39cdcc;
     padding: 0.5rem 0.8rem;
+    .title {
+      color: var(--header-color) !important;
+    }
   }
   & .title {
-    color: var(--header-color) !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,42 +1,43 @@
 # LendSQR Frontend Application
 
-A modern, responsive web application built with Next.js, TypeScript, and SCSS, designed to provide a seamless user management interface for the LendSQR platform.
+A modern, responsive web application built with React/Next.js, TypeScript, and SCSS, designed to provide a seamless user management interface for the LendSQR platform.
 
 ## 🚀 Features
 
-- **User Authentication**: Secure sign-in flow with form validation
+- **User Authentication**: Secure sign-in flow with form validation ( basic)
 - **User Management**: Comprehensive user listing with filtering and search capabilities
 - **Responsive Design**: Fully responsive layout that works on all device sizes
 - **Modern UI Components**: Custom form inputs, buttons, and interactive elements
-- **Client-side State Management**: Powered by React Query for efficient data fetching and caching
+- **Pagination**: Custom pagination component (client side)
 - **Type Safety**: Built with TypeScript for better developer experience and code reliability
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 13+ (App Router)
+- **Framework**: Next.js 15+ (App Router)
 - **Language**: TypeScript
 - **Styling**: SCSS Modules
-- **State Management**: React Query
 - **UI Components**: Custom built with accessibility in mind
-- **Form Handling**: React Hook Form
-- **Table Management**: @tanstack/react-table
 - **Linting**: ESLint
 - **Package Manager**: npm
+- **Testing**: Jest
+- **API**: Mock API using Nextjs API routes, (Mocky.io is now paid, json-generator is confusing me)
 
 ## 📦 Prerequisites
 
-- Node.js 18.0.0 or later
+- Node.js 20.0.0 or later
 - npm or yarn package manager
 
 ## 🚀 Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/lendsqr-fe.git
    cd lendsqr-fe
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -44,6 +45,7 @@ A modern, responsive web application built with Next.js, TypeScript, and SCSS, d
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    # or
@@ -58,16 +60,12 @@ A modern, responsive web application built with Next.js, TypeScript, and SCSS, d
 /src
   /app                  # App Router pages and layouts
     /(auth)             # Authentication related routes
-    /dashboard           # Protected dashboard routes
-    /users              # User management section
+    /(dashboard)        # dashboard routes (users and users/[id])
+    /api/*                # API routes (users and users/?id=[id])
+  /assets               # Reusable assets (icons/svgs, images, etc.)
   /components           # Reusable UI components
-    /buttons           # Button components
-    /forms             # Form components
-    /tables            # Table components
-    /modals            # Modal components
-  /hooks               # Custom React hooks
-  /lib                 # Utility functions and configurations
-  /styles              # Global styles and SCSS variables
+  /lib                 # Utility functions and configurations (mock function for api)
+  /styles              # Global styles and SCSS variables, mixin and more
   /types               # TypeScript type definitions
   /utils               # Helper functions and utilities
 ```
@@ -81,6 +79,8 @@ npm test
 # or
 yarn test
 ```
+
+Notes: Mock API, App routes/pages and parent components are excluded from the unit test
 
 ## 🧹 Linting
 

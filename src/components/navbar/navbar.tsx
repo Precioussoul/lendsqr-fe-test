@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import styles from "./navbar.module.scss"
 import Image from "next/image"
 import logo from "@/assets/svgs/Lendsqr_logo.svg"
@@ -16,14 +16,18 @@ interface NavbarProps {
   onSidebarMenuClick?: () => void
 }
 
-const Navbar = ({ onSidebarMenuClick }: NavbarProps) => {
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+const Navbar = ({onSidebarMenuClick}: NavbarProps) => {
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
   return (
     <div className={styles.navbar}>
       <div className={styles.logoContainer}>
         <Image src={sidebarLeftMenu} alt='Sidebar Left Menu' width={30} height={30} className={styles.sidebarMenu} onClick={onSidebarMenuClick} />
-        <Image src={logo} alt='Logo' width={150} height={50} className={styles.logo} />
-        <Image src={LogoMobile} alt='Logo' width={50} height={50} className={styles.logoMobile} />
+        <Link href={"/"}>
+          <Image src={logo} alt='Logo' width={150} height={50} className={styles.logo} />
+        </Link>
+        <Link href={"/"}>
+          <Image src={LogoMobile} alt='Logo' width={50} height={50} className={styles.logoMobile} />
+        </Link>
       </div>
       <div className={styles.navLinksContainer}>
         <SearchInput />
@@ -36,10 +40,7 @@ const Navbar = ({ onSidebarMenuClick }: NavbarProps) => {
 
             <Image src={notification} alt='Notification' width={30} height={30} />
           </div>
-          <div 
-            className={styles.searchMobileContainer} 
-            onClick={() => setIsSearchModalOpen(true)}
-          >
+          <div className={styles.searchMobileContainer} onClick={() => setIsSearchModalOpen(true)}>
             <Image src={SearchIcon} alt='Search' width={15} height={15} />
           </div>
           <div className={styles.profileContainer}>
@@ -53,10 +54,7 @@ const Navbar = ({ onSidebarMenuClick }: NavbarProps) => {
           </div>
         </div>
       </div>
-      <SearchModal 
-        isOpen={isSearchModalOpen} 
-        onClose={() => setIsSearchModalOpen(false)} 
-      />
+      <SearchModal isOpen={isSearchModalOpen} onClose={() => setIsSearchModalOpen(false)} />
     </div>
   )
 }

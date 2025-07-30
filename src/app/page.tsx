@@ -1,7 +1,15 @@
-import React from "react"
+"use client"
+import {useRouter} from "next/navigation"
+import {useEffect} from "react"
 
-const Home = () => {
-  return <div>Landing page</div>
+export default function HomePage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace("/sign-in")
+  }, [router])
+
+  // default landing page for future use
+
+  return null
 }
-
-export default Home

@@ -10,7 +10,8 @@ import {useRouter} from "next/navigation"
 const LoginPage = () => {
   const router = useRouter()
 
-  const handleSignIn = () => {
+  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     router.push("/users")
   }
 
@@ -31,14 +32,16 @@ const LoginPage = () => {
             <h1>Welcome!</h1>
             <p>Enter details to login.</p>
           </div>
-          <div className={styles.authForm}>
-            <PrimaryInput type='email' id='email' name='email' placeholder='Enter your email' />
-            <PrimaryInput type='password' id='password' name='password' placeholder='Enter your password' showPassword />
-            <span className={styles.forgotPassword}>Forgot Password?</span>
-          </div>
-          <button className={styles.signInButton} onClick={handleSignIn}>
-            Sign In
-          </button>
+          <form onSubmit={handleSignIn}>
+            <div className={styles.authForm}>
+              <PrimaryInput type='email' id='email' name='email' placeholder='Enter your email' required />
+              <PrimaryInput type='password' id='password' name='password' placeholder='Enter your password' showPassword required />
+              <span className={styles.forgotPassword}>Forgot Password?</span>
+            </div>
+            <button type='submit' className={styles.signInButton}>
+              Sign In
+            </button>
+          </form>
         </div>
       </div>
     </div>
